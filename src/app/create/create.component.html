@@ -1,0 +1,25 @@
+
+<div class="article-container">
+  <form [formGroup]="articleFrm" (ngSubmit)="addArticle(article,articleFrm.value)" *ngIf="articleFrm">
+    <div class="row expanded">
+      <div class="small-12 columns">
+        <label>Name
+          <input type="name" name="name" [formControl]="articleFrm.controls['name']" formControlName="name">
+        </label>
+        <div class="alert" *ngIf="!articleFrm.controls['name'].valid && articleFrm.controls['name'].touched">
+          You must specify a title that's at least 5 characters long.
+        </div>
+
+        <label>Number
+          <textarea name="telefono" id="telefono" required [formControl]="articleFrm.controls['telefono']" formControlName="telefono"></textarea>
+        </label>
+        <div class="alert" *ngIf="!articleFrm.controls['telefono'].valid && articleFrm.controls['telefono'].touched">
+          You must specify telefono that's at least 9 characters long.
+        </div>
+
+        <input type="submit" class="cta-btn filled" value="Enviar" [disabled]="!articleFrm.valid">
+
+      </div>
+    </div>
+  </form>
+</div>
